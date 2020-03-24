@@ -263,21 +263,17 @@
                 <h4>Demo Talebinde Bulunun</h4>
                 <br /><br />
                 <p class="text-right small pr-5">Hemen Deneyin</p>
-                <form
-                  class="input-glass input-round"
-                  action=""
-                  method="post"
-                  target="_blank"
-                >
+                <form id="demoForm" class="input-glass input-round">
                   <div class="input-group">
                     <input
                       type="text"
-                      name="EMAIL"
+                      name="phoneNumber"
                       class="form-control"
                       placeholder="Telefon Numarası"
+                      id="phoneNumberInput"
                     />
                     <span class="input-group-append">
-                      <button class="btn btn-glass btn-light" type="button">
+                      <button class="btn btn-glass btn-light" type="submit">
                         Gönder <i class="ti-arrow-right fs-9 ml-2"></i>
                       </button>
                     </span>
@@ -314,7 +310,74 @@
       <i class="fa fa-angle-up"></i>
     </button>
 
+    <div
+      id="successPopup"
+      class="popup col-10 col-md-4 p-4"
+      data-animation="slide-up"
+    >
+      <button
+        type="button"
+        class="close"
+        data-dismiss="popup"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <p class="mb-0">
+        Demo talebiniz başarı ile gönderilmiştir.
+      </p>
+    </div>
+
+    <div
+      id="errorPopup"
+      class="popup col-10 col-md-4 p-4"
+      data-animation="slide-up"
+    >
+      <button
+        type="button"
+        class="close"
+        data-dismiss="popup"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <p class="mb-0">
+        Geçerli bir telefon numarası girmeniz gerekmektedir.
+      </p>
+    </div>
+
     <!-- Scripts -->
     <script src="assets/js/page.min.js"></script>
+    <script>
+      const successPopup = document.getElementById("successPopup");
+      const errorPopup = document.getElementById("errorPopup");
+      // const getDemoButton = document.getElementById("getDemoButton");
+      // $.post("http://bkbmail.bkbsoftapp.xyz/api/v1.0/mail/sendmail", function(data) {
+
+      // })
+      const demoForm = document.getElementById("demoForm");
+      demoForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const phoneNumberInput = document.getElementById("phoneNumberInput");
+        if (phoneNumberInput.value === "" || !phoneNumberInput) {
+          errorPopup.classList.add("show");
+          return;
+        }
+
+        $.post(
+          "http://bkbmail.bkbsoftapp.xyz/api/v1.0/mail/sendmail",
+          { phone: phoneNumberInput.value },
+          function(data) {
+            successPopup.classList.add("show");
+          }
+        ).fail(function(err) {
+          phoneNumberInput.value = "";
+          errorPopup.innerText = "Beklenmedik bir hata meydana geldi.";
+          errorPopup.classList.add("show");
+        });
+      });
+    </script>
   </body>
 </html>

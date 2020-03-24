@@ -1,4 +1,3 @@
-
 /*
 |--------------------------------------------------------------------------
 | Core
@@ -8,7 +7,7 @@
 | plugins and define page object. This file is required.
 |
 */
-require('./loaders/core.js');
+require("./loaders/core.js");
 
 /*
 |--------------------------------------------------------------------------
@@ -22,18 +21,17 @@ require('./loaders/core.js');
 | know how much KB you can save by removing a vendor.
 |
 */
-require('./vendors/aos.js');            // 14 kb
-require('./vendors/constellation.js');  // 03 kb
-require('./vendors/countdown.js');      // 05 kb
-require('./vendors/countup.js');        // 13 kb
-require('./vendors/granim.js');         // 15 kb
-require('./vendors/jarallax.js');       // 23 kb
-require('./vendors/lity.js');           // 07 kb
-require('./vendors/photoswipe.js');     // 45 kb
-require('./vendors/shuffle.js');        // 25 kb
-require('./vendors/slick.js');          // 43 kb
-require('./vendors/typed.js');          // 11 kb
-
+require("./vendors/aos.js"); // 14 kb
+require("./vendors/constellation.js"); // 03 kb
+require("./vendors/countdown.js"); // 05 kb
+require("./vendors/countup.js"); // 13 kb
+require("./vendors/granim.js"); // 15 kb
+require("./vendors/jarallax.js"); // 23 kb
+require("./vendors/lity.js"); // 07 kb
+require("./vendors/photoswipe.js"); // 45 kb
+require("./vendors/shuffle.js"); // 25 kb
+require("./vendors/slick.js"); // 43 kb
+require("./vendors/typed.js"); // 11 kb
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +41,4 @@ require('./vendors/typed.js');          // 11 kb
 | Split the application code to several files. This file is required.
 |
 */
-require('./loaders/partials.js');
+require("./loaders/partials.js");
